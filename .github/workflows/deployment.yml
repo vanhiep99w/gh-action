@@ -1,8 +1,11 @@
 name: Deployment
-on: 
+on:
   pull_request:
     types: [opened]
   workflow_dispatch:
+  push:
+    branches:
+      - main
 jobs:
   test:
     runs-on: ubuntu-latest
