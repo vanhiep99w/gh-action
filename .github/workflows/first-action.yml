@@ -1,13 +1,13 @@
 name: Test Workflow
 on: push
-jobs: 
-  first-job: 
+jobs:
+  first-job:
     runs-on: ubuntu-latest
-    steps: 
+    steps:
       - name: get code
         uses: actions/checkout@v3
       - name: Install NodeJS
-        uses: actions/steup-node@v3
+        uses: actions/setup-node@v3
         with:
           node-version: 18
       - name: Install dpendencies
