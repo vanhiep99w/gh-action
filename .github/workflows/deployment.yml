@@ -8,4 +8,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Deploy code
-        run: echo "Deploying..."
+        run: echo "Deploying...."
