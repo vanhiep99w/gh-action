@@ -1,22 +1,11 @@
 name: Deployment
-on: [push]
+on: 
+  pull_request:
+    types: [opened]
+  workflow_dispatch:
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - name: get code
-        uses: actions/checkout@v3
-      - name: Install NodeJS
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
-      - name: Install dpendencies
-        run: npm ci
-      - name: lint code
-        run: npm run lint
-      - name: Run tests
-        run: npm test
-      - name: build
-        run: npm run build
       - name: Deploy code
         run: echo "Deploying..."
