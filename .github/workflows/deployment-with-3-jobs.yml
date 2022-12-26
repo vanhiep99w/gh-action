@@ -20,7 +20,8 @@ jobs:
         run: npm run build
       - name: Deploy code
         run: echo "Deploying..."
-  test: 
+  test:
+    needs: [lint]
     runs-on: ubuntu-latest
     steps:
       - name: get code
@@ -33,7 +34,8 @@ jobs:
         run: npm ci
       - name: Run tests
         run: npm test
-  deploy: 
+  deploy:
+    needs: [test]
     runs-on: ubuntu-latest
     steps:
       - name: get code
