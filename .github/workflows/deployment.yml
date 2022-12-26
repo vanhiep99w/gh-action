@@ -1,5 +1,5 @@
 name: Deployment
-on: [push, workflow_dispatch]
+on: [push]
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -12,21 +12,11 @@ jobs:
           node-version: 18
       - name: Install dpendencies
         run: npm ci
+      - name: lint code
+        run: npm run lint
       - name: Run tests
         run: npm test
-  deploy:
-    needs: test
-    runs-on: ubuntu-latest
-    steps:
-      - name: get code
-        uses: actions/checkout@v3
-      - name: Install NodeJS
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
-      - name: Install dpendencies
-        run: npm ci
-      - name: Build project
+      - name: build
         run: npm run build
-      - name: Deploy
-        run: echo "Deppying..."
+      - name: Deploy code
+        run: echo "Deploying..."
